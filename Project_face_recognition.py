@@ -8,8 +8,6 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tess
 
 face_cascade = cv.CascadeClassifier("OneDrive\Escritorio\scripts\haarcascade_frontalface_default.xml")
 
-
-
 def extract_text(image):
     grey = image.convert("L")
     txt = pytesseract.image_to_string(grey)
@@ -106,14 +104,13 @@ cv_img12 = cv.imread("images\pic_12.png")
 cv_img13 = cv.imread("images\pic_13.png")
 cvs = [cv_img0, cv_img1, cv_img2, cv_img3, cv_img4, cv_img5, cv_img6, cv_img7, cv_img8, cv_img9, cv_img10, cv_img11, cv_img12, cv_img13]
 
-
 texts = []
 
- #for image in images:
-        #texts.append(extract_text(image))
+ for image in images:
+        texts.append(extract_text(image))
         
-    #for t in range(len(texts)):
-        #create_file(texts[t], t)
+for t in range(len(texts)):
+        create_file(texts[t], t)
 
 t0 = open("page_0.txt", "r")
 t1 = open("page_1.txt", "r")
@@ -138,9 +135,6 @@ for t in tx:
 work = list(zip(images, cvs, info))
 word = "Mark"
 
-#test = show_faces(crop_face(img0, cv_img0))
-#print(len(crop_face(img0, cv_img0)))
-#test.show()
 
 look_for_a_word(word, work)
 
